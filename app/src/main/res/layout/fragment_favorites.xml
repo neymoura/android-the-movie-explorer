@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.ghost.themovieexplorer.view.fragment.FavoritesFragment">
 
+    <com.ghost.themovieexplorer.view.TMERecyclerView
+        android:id="@+id/favorites"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <TextView
+        android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_favorites"
+        android:text="@string/empty_view_favorites"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
