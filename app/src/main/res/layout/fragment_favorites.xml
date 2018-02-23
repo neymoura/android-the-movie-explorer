@@ -9,7 +9,7 @@
     <com.ghost.themovieexplorer.view.TMERecyclerView
         android:id="@+id/favorites"
         app:layoutManager="GridLayoutManager"
-        app:spanCount="2"
+        app:spanCount="@integer/movies_span"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

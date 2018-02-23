@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">The Movie Explorer</string>
+    <string name="app_name" translatable="false">The Movie Explorer</string>
+
+    <string name="placeholder_movie_title" translatable="false">Movie Title</string>
+
     <string name="title_explore">Explore</string>
     <string name="title_favorites">Favorites</string>
     <string name="empty_view_favorites">You don\'t have any favorite movies yet</string>
-    <string name="placeholder_movie_title">Movie Title</string>
 </resources>
