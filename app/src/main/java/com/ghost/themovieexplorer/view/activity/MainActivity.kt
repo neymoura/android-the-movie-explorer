@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         navigation.setOnNavigationItemSelectedListener {
 
-            val position = when (it.itemId){
+            val position = when (it.itemId) {
                 R.id.navigation_explore -> MainMenuPageAdapter.exploreFragment
                 R.id.navigation_favorite -> MainMenuPageAdapter.favoritesFragment
                 else -> null
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 viewPager.currentItem = position
             }
 
-             true
+            true
 
         }
     }

@@ -1,27 +1,26 @@
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ghost.themovieexplorer.view.fragment.FavoritesFragment">
 
-    <com.ghost.themovieexplorer.view.TMERecyclerView
+    <com.ghost.themovieexplorer.view.custom.TMERecyclerView
         android:id="@+id/favorites"
-        app:layoutManager="GridLayoutManager"
-        app:spanCount="@integer/movies_span"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="@integer/movies_span" />
 
     <TextView
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/empty_view_favorites"
         android:gravity="center"
+        android:text="@string/empty_view_favorites"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

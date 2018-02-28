@@ -1,4 +1,4 @@
-package com.ghost.themovieexplorer.view
+package com.ghost.themovieexplorer.view.custom
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -18,7 +18,7 @@ class TMERecyclerView : RecyclerView {
         override fun onChanged() {
 
             adapter?.let {
-                when (adapter.itemCount){
+                when (adapter.itemCount) {
                     0 -> {
                         emptyView?.visibility = View.VISIBLE
                         this@TMERecyclerView.visibility = View.GONE
