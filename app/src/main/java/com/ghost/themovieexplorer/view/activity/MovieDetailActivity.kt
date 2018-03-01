@@ -48,7 +48,7 @@ class MovieDetailActivity : AppCompatActivity() {
             supportActionBar?.title = it.title
 
             Picasso.with(this@MovieDetailActivity)
-                    .load(movie.posterUrl)
+                    .load(movie.posterPath)
                     .into(poster)
 
         }

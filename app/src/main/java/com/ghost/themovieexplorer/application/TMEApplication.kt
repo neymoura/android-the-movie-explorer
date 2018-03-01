@@ -4,8 +4,8 @@ import android.app.Application
 
 class TMEApplication : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
+    companion object {
+        const val movieDBApiKey = "9fb1244aab053cf93fa00223bef8e80f"
     }
 
 }

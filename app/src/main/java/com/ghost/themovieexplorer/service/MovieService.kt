@@ -1,20 +1,24 @@
 package com.ghost.themovieexplorer.service
 
+import com.ghost.themovieexplorer.api.Page
+import com.ghost.themovieexplorer.application.TMEApplication
 import com.ghost.themovieexplorer.model.Movie
+import com.ghost.themovieexplorer.service.retrofit.RetrofitFactory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
 
 object MovieService {
 
     fun getMovies(): List<Movie> {
 
-        val favoritesList: MutableList<Movie> = mutableListOf()
+        return mutableListOf()
 
-        favoritesList.add(Movie(1, "Spirited Away", "https://images-na.ssl-images-amazon.com/images/M/MV5BOGJjNzZmMmUtMjljNC00ZjU5LWJiODQtZmEzZTU0MjBlNzgxL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SY1000_CR0,0,675,1000_AL_.jpg"))
-        favoritesList.add(Movie(2, "Pulp Fiction", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_SY1000_CR0,0,673,1000_AL_.jpg"))
-        favoritesList.add(Movie(3, "Interstellar", "https://images-na.ssl-images-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_SX675_AL_.jpg"))
-        favoritesList.add(Movie(4, "Inception", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg"))
+    }
 
-        return favoritesList
-
+    fun getFavorites(): List<Movie> {
+        return getMovies()
     }
 
     fun getMovie(id: Long): Movie? {
@@ -25,8 +29,38 @@ object MovieService {
         }
     }
 
-    fun getFavorites(): List<Movie> {
-        return getMovies()
+    fun queryMovies(query: String){
+
+        val parameters: MutableMap<String, String> = mutableMapOf()
+
+        parameters["query"] = query
+        parameters["language"] = Locale.getDefault().toString()
+        parameters["api_key"] = TMEApplication.movieDBApiKey
+        parameters["include_video"] = false.toString()
+        parameters["include_adult"] = false.toString()
+
+        val call = RetrofitFactory.theMovieDBAPI().queryMovies(parameters)
+
+        call.enqueue(object: Callback<Page<Movie>?> {
+
+            override fun onResponse(call: Call<Page<Movie>?>?, response: Response<Page<Movie>?>?) {
+                TODO("not implemented")
+            }
+
+            override fun onFailure(call: Call<Page<Movie>?>?, t: Throwable?) {
+                TODO("not implemented")
+            }
+
+        })
+
+    }
+
+    fun queryMovieDetails(){
+        TODO("not implemented")
+    }
+
+    fun queryMovieImageSet(){
+        TODO("not implemented")
     }
 
 }
