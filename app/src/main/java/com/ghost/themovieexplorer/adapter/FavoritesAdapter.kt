@@ -18,7 +18,7 @@ class FavoritesAdapter(private val itemClickListener: (View, Int, Int) -> Unit) 
     }
 
     override fun getItemId(position: Int): Long {
-        return MovieService.getFavorites()[position].id
+        return MovieService.getFavorites()[position].id ?: -1
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {

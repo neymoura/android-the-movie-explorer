@@ -1,5 +1,13 @@
 package com.ghost.themovieexplorer.model
 
-class ImageSet(val id: String,
-               val backdrops: List<Image>,
-               val posters: List<Image>)
+import io.realm.RealmList
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+
+open class ImageSet: RealmObject(){
+
+    @PrimaryKey var id: String? = null
+    var backdrops: RealmList<Image>? = null
+    var posters: RealmList<Image>? = null
+
+}

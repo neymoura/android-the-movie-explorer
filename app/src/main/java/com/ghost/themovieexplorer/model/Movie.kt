@@ -1,13 +1,34 @@
 package com.ghost.themovieexplorer.model
 
-import com.ghost.themovieexplorer.api.Result
+import io.realm.Realm
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
-data class Movie(val id: Long,
-                 val title: String,
-                 val originalTitle: String,
-                 val overview: String,
-                 val posterPath: String,
-                 val backdropPath: String,
-                 val videos: Result<Video>,
-                 val imageSet: ImageSet
-)
+open class Movie : RealmObject() {
+
+    @PrimaryKey
+    var id: Long? = null
+    var title: String? = null
+    var originalTitle: String? = null
+    var overview: String? = null
+    var posterPath: String? = null
+    var backdropPath: String? = null
+    var videos: VideoSet? = null
+
+    fun getImageSet(): ImageSet? {
+
+        val realm = Realm.getDefaultInstance()
+
+        var imageSet: ImageSet? = null
+
+        realm?.let {
+            imageSet = it.where(ImageSet::class.java).equalTo("id", id).findFirst()
+        }
+
+        realm?.close()
+
+        return imageSet
+
+    }
+
+}

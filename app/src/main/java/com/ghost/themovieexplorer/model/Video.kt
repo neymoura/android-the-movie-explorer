@@ -1,9 +1,16 @@
 package com.ghost.themovieexplorer.model
 
-data class Video(val id: String,
-                 val key: String,
-                 val name: String,
-                 val site: String,
-                 val iso6391: String,
-                 val iso31661: String
-)
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+
+open class Video : RealmObject() {
+
+    @PrimaryKey
+    var id: String? = null
+    var key: String? = null
+    var name: String? = null
+    var site: String? = null
+    var iso6391: String? = null
+    var iso31661: String? = null
+
+}
