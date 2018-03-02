@@ -2,6 +2,7 @@ package com.ghost.themovieexplorer.service
 
 import com.ghost.themovieexplorer.api.Page
 import com.ghost.themovieexplorer.application.TMEApplication
+import com.ghost.themovieexplorer.model.ImageSet
 import com.ghost.themovieexplorer.model.Movie
 import com.ghost.themovieexplorer.service.retrofit.RetrofitFactory
 import retrofit2.Call
@@ -55,12 +56,49 @@ object MovieService {
 
     }
 
-    fun queryMovieDetails(){
-        TODO("not implemented")
+    fun queryMovieDetails(movieId: Long){
+
+        val parameters: MutableMap<String, String> = mutableMapOf()
+
+        parameters["append_to_response"] = "videos"
+        parameters["language"] = Locale.getDefault().toString()
+        parameters["api_key"] = TMEApplication.movieDBApiKey
+
+        val call = RetrofitFactory.theMovieDBAPI().queryMovieDetails(movieId, parameters)
+
+        call.enqueue(object: Callback<Movie> {
+
+            override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onFailure(call: Call<Movie>?, t: Throwable?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        })
+
     }
 
-    fun queryMovieImageSet(){
-        TODO("not implemented")
+    fun queryMovieImageSet(movieId: Long){
+
+        val parameters: MutableMap<String, String> = mutableMapOf()
+
+        parameters["api_key"] = TMEApplication.movieDBApiKey
+
+        val call = RetrofitFactory.theMovieDBAPI().queryMovieImageSet(movieId, parameters)
+
+        call.enqueue(object: Callback<ImageSet> {
+
+            override fun onResponse(call: Call<ImageSet>?, response: Response<ImageSet>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onFailure(call: Call<ImageSet>?, t: Throwable?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        })
     }
 
 }

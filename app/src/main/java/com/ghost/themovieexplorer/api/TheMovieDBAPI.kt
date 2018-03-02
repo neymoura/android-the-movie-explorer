@@ -13,9 +13,9 @@ interface TheMovieDBAPI {
     fun queryMovies(@QueryMap options: Map<String, String>): Call<Page<Movie>>
 
     @GET("/movie/{movieId}/")
-    fun queryMovieDetails(@Path("movieId") movieId: String, @QueryMap options: Map<String, String>): Call<Movie>
+    fun queryMovieDetails(@Path("movieId") movieId: Long, @QueryMap options: Map<String, String>): Call<Movie>
 
     @GET("/movie/{movieId}/images")
-    fun queryMovieImageSet(@Path("movieId") movieId: String, @QueryMap options: Map<String, String>): Call<ImageSet>
+    fun queryMovieImageSet(@Path("movieId") movieId: Long, @QueryMap options: Map<String, String>): Call<ImageSet>
 
 }
