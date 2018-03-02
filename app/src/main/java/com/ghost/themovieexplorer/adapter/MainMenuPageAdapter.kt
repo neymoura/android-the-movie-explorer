@@ -9,8 +9,8 @@ import com.ghost.themovieexplorer.view.fragment.FavoritesFragment
 class MainMenuPageAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     companion object {
-        val exploreFragment = 0
-        val favoritesFragment = 1
+        const val exploreFragment = 0
+        const val favoritesFragment = 1
     }
 
     override fun getItem(position: Int): Fragment {

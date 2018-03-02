@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ghost.themovieexplorer.R
+import com.ghost.themovieexplorer.model.Image
 import com.ghost.themovieexplorer.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.holder_movie.view.*
@@ -21,7 +22,7 @@ class MovieViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     fun bind(movie: Movie) {
 
         with(view) {
-            Picasso.with(context).load(movie.posterPath).into(poster)
+            Picasso.with(context).load(Image.getUrl(movie.posterPath ?: "")).into(poster)
         }
 
     }

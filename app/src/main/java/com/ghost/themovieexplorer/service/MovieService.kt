@@ -7,6 +7,7 @@ import com.ghost.themovieexplorer.model.MoviePage
 import com.ghost.themovieexplorer.service.retrofit.RetrofitFactory
 import io.realm.Realm
 import io.realm.RealmObject
+import io.realm.RealmResults
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,19 +15,18 @@ import java.util.*
 
 object MovieService {
 
-    fun getMovies(): List<Movie> {
-
-        return mutableListOf()
-
+    fun getMovies(): RealmResults<Movie>? {
+        val realm = Realm.getDefaultInstance()
+        return realm?.where(Movie::class.java)?.findAll()
     }
 
-    fun getFavorites(): List<Movie> {
+    fun getFavorites(): RealmResults<Movie>? {
         return getMovies()
     }
 
     fun getMovie(id: Long): Movie? {
         return try {
-            getFavorites().first { it.id == id }
+            getFavorites()?.toList()?.first { it.id == id }
         } catch (exception: Exception) {
             null
         }
@@ -124,12 +124,9 @@ object MovieService {
 
     private fun save(data: RealmObject){
         val realm = Realm.getDefaultInstance()
-
         realm?.executeTransaction {
             it.copyToRealmOrUpdate(data)
         }
-
-        realm?.close()
     }
 
 }

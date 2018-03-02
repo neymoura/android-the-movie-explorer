@@ -19,9 +19,19 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
 
         if (BuildConfig.DEBUG) {
-            val movieId: Long = 152584
-            MovieService.queryMovieDetails(movieId)
-            MovieService.queryMovieImageSet(movieId)
+
+            fun loadMovie(movieId: Long) {
+                MovieService.queryMovieDetails(movieId)
+                MovieService.queryMovieImageSet(movieId)
+            }
+
+            loadMovie(152584)
+            loadMovie(374720)
+            loadMovie(27205)
+            loadMovie(11299)
+            loadMovie(351460)
+            loadMovie(157336)
+
         }
 
     }

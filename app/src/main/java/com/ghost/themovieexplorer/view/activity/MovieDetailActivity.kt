@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.ghost.themovieexplorer.R
+import com.ghost.themovieexplorer.model.Image
 import com.ghost.themovieexplorer.model.Movie
 import com.ghost.themovieexplorer.service.MovieService
 import com.squareup.picasso.Picasso
@@ -48,7 +49,7 @@ class MovieDetailActivity : AppCompatActivity() {
             supportActionBar?.title = it.title
 
             Picasso.with(this@MovieDetailActivity)
-                    .load(movie.posterPath)
+                    .load(Image.getUrl(movie.backdropPath ?: movie.backdropPath ?: ""))
                     .into(poster)
 
         }
