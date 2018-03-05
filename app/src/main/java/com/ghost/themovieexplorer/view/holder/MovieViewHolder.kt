@@ -23,7 +23,8 @@ class MovieViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         with(view) {
 
-            Picasso.with(context).loadPath(movie.posterPath).into(poster)
+            //            Picasso.with(context).loadPath(movie.posterPath).into(poster)
+            Picasso.with(context).loadPath(movie.backdropPath).into(poster)
 
         }
 

@@ -10,17 +10,18 @@ import com.ghost.themovieexplorer.model.Movie
 import com.ghost.themovieexplorer.service.MovieService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import kotlinx.android.synthetic.main.content_movie_detail.*
 
 
 class MovieDetailActivity : AppCompatActivity() {
 
+    companion object {
+        const val extraMovieId: String = "MOVIE_ID"
+    }
+
     private val movie by lazy {
         val movieId = intent.extras.getLong(extraMovieId)
         MovieService.getMovie(movieId)
-    }
-
-    companion object {
-        val extraMovieId: String = "MOVIE_ID"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +48,8 @@ class MovieDetailActivity : AppCompatActivity() {
         movie?.let {
 
             supportActionBar?.title = it.title
+
+            movie_description.text = it.overview
 
             Picasso.with(this@MovieDetailActivity)
                     .loadPath(movie.backdropPath ?: movie.posterPath)
